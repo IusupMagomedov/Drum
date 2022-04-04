@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import { Button, Grid, Typography } from '@mui/material';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid container spacing={2} id="drum-machine" >
+      <Grid item xs={3}></Grid>
+      <Grid item xs={6}>
+        <Typography variant="h4" component="h1" gutterBottom >
+          Create React App example
+        </Typography>
+      </Grid>
+      <Grid item xs={3}></Grid>
+      <Grid item xs={3}></Grid>
+      <Grid item xs={6}>
+        <Grid container spacing={2} id="drum-machine" >
+          <Grid item xs={4}><Button variant="outlined">Hello World</Button></Grid>
+          <Grid item xs={4}><Button variant="outlined">Hello World</Button></Grid>
+          <Grid item xs={4}><Button variant="outlined">Hello World</Button></Grid>
+          <Grid item xs={4}><Button variant="outlined">Hello World</Button></Grid>
+          <Grid item xs={4}><Button variant="outlined">Hello World</Button></Grid>
+          <Grid item xs={4}><Button variant="outlined">Hello World</Button></Grid>
+          <Grid item xs={4}><Button variant="outlined">Hello World</Button></Grid>
+          <Grid item xs={4}><Button variant="outlined">Hello World</Button></Grid>
+          <Grid item xs={4}><Button variant="outlined">Hello World</Button></Grid>
+        </Grid>
+      </Grid>
+      <Grid item xs={3}></Grid>
+    </Grid>
+    
   );
 }
 
