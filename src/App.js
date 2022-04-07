@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { Button, Grid, Typography } from '@mui/material';
+
+
+
 const bankOne = [
   {
     keyCode: 81,
@@ -114,25 +117,36 @@ const bankTwo = [
   }
 ];
 
+
+
 function App() {
   const [bankTrigger, setBankTrigger] = React.useState(true)
-  const playAudio = event => {
-    
-    
-    const soundId = currentBank
+  const [currentBank, setCurrentBank] = React.useState(bankOne)
+  const [display, setDisplay] = React.useState('sound will be here')
+  // = bankTrigger ? bankOne : bankTwo
+
+  const buttonTrigger = soundId => {
+    document.getElementById(soundId).play()
+    setDisplay(currentBank.filter(element => element.keyTrigger === soundId)[0].id)
+  }
+
+  const keyHandler = event => buttonTrigger(event.code.substring(3))
+
+
+  document.addEventListener('keypress', keyHandler)
+  //document.removeEventListener('keydown', keyHandler)
+
+  const clickHandler = event => {
+    buttonTrigger(currentBank
     .filter(element => event.target.id == element.id)
-    [0].keyTrigger
-    console.log(soundId)
-    const sound = document.getElementById(soundId)
-    sound.play()
+    [0].keyTrigger)
   };
-  const currentBank = bankTrigger ? bankOne : bankTwo
   return (
     <Grid container spacing={2} id="drum-machine" >
       <Grid item xs={3}></Grid>
       <Grid item xs={6}>
         <Typography variant="h4" component="h1" gutterBottom id="display">
-          Create React App example
+          {display}
         </Typography>
         </Grid>
         <Grid item xs={3}></Grid>
@@ -141,7 +155,7 @@ function App() {
           <Grid container spacing={2} >
             {bankOne.map(element => 
               <Grid item xs={4}>
-                <Button variant="outlined" className='drum-pad' id={element.id} onClick={playAudio}>
+                <Button variant="outlined" className='drum-pad' id={element.id} onClick={clickHandler}>
                   {element.keyTrigger}
                   <audio  className="clip" id={element.keyTrigger} src={element.url}>
                    
@@ -156,5 +170,8 @@ function App() {
     
   );
 }
+
+
+
 
 export default App;
