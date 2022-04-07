@@ -1,1 +1,1 @@
-Build a Drum Machine for www.freecodecamp.org course
+Build a JavaScript Calculator for www.freecodecamp.org course
